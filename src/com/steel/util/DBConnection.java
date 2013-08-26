@@ -1,6 +1,7 @@
 package com.steel.util;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,7 +38,7 @@ public class DBConnection {
 		return conn;
 	}
 	
-	public static void close(ResultSet rs,Statement st,Connection conn){
+	public static void close(ResultSet rs,CallableStatement proc,Statement st,Connection conn){
 		if(rs!=null){
 			try {
 				rs.close();
@@ -55,6 +56,13 @@ public class DBConnection {
 		if(conn != null){
 			try {
 				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if(proc != null){
+			try {
+				proc.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

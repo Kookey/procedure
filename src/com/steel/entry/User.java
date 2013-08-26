@@ -31,5 +31,8 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	@Override
+	public String toString() {
+		return "用户ID:"+id+"用户名:"+name+"用户密码:"+pwd+"用户地址:"+address;
+	}
 }
